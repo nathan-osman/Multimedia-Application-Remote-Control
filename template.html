@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multimedia Application Remote Control</title>
+<style>
+
+body {
+    margin: 0;
+}
+
+#bottombar {
+    bottom: 0;
+    overflow: hidden;
+    padding-top: 24px;
+    position: absolute;
+    width: 100%;
+}
+
+#button-container {
+    background-color: #ddd;
+    border-top: 1px solid #aaa;
+    height: 40px;
+    text-align: center;
+}
+
+#button-container button {
+    background-color: #eee;
+    border: 2px solid #bbb;
+    border-radius: 32px;
+    margin-top: -20px;
+    padding: 12px;
+}
+
+#button-container button:hover {
+    background-color: #ddd;
+    border-color: #aaa;
+    cursor: pointer;
+}
+
+#button-container button.large {
+    border-radius: 44px;
+}
+
+.sprites {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAAAsCAYAAACAPl2hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAWJAAAFiQFtaJ36AAAAB3RJTUUH3QIcFi4wNw74VAAABJ5JREFUeNrtnO1v01YUxn92QulaBjRtGYOyFjo6VduATbDBNGkfJu3T9jcPJAQbfIBq4q2ssA4KlJVCWgprm8T74MeqF8V248T2TXqPZMVKT5x7z3PPc17uTSFavgEGsWKUlGL+9hVwGnCAVcCz5jIbsBmBVNH9G2DDmsxswMJyHDgFPAVq1nTmAwbgCrQK8LzHadIFjgFjYo84G40CR0J6U0AZ2EywwUlgWMzkFQFYIEOKb57iW6/JceCs5vBPzByOAF8AXwJr0g0+fx74ENiKCRVjwNd6rQPrnQ683OHnP9N1HXjVA0B9AFzUaymG2l3gO+Cg7reaPMTTe2NimzXgGtBo8awacFgLZAb4DXift4c1yyfABLCklWSalOVNF3Xv6H1HXvM6pDcJ/AAMhPRceWHgYeOiSU86g8CsKPJtCLgR6QZ6A6FkrhoBcKYeFl5xQ8BPwDJw0yCwphVLDkR4VLDAJnVVUiZVNXnRCWBRVz1Cb1Z6j4GFIjwsLAeAT3VfZHw7Klo7qoXZajU78ooZscT+GL1mD6u0SCQaesZHuhzgUIvnNTSmcSUwG/LMQgALJjguI6wD73IEagg4p1XshGgtihkqoqqk+ewGsLAMSqeeMAZXdjqoLHQ7D0qMMsYgcEk0OQf8m+H37Rf1TWteSYYKgMgy5rYzhmPKShdElZt5elgzcMN6XiMjmjwBfKuVTwb1YRoPS2MnR8nMpABbKwKwMG+Piqq60eZyRCPfKw5kWcTnAVjz902o3nulEiJzSoyjiQsaxNWU8e2QOi4ToczLoX/E0ZyGVGI8BR4B1XKBgxoAfgRWVHjvNkk6owxsH/2/gxDMb0JzXnYNGNAo8Is6JlZyKpy7Adxp0dyNmDZXHbjVghL71dMCmjeCEqMo7xJ+r+1KTMehCtxWCnwBvwm73UdxzBPlr6trtB4syjyzxHZknzzuMH5/Mko2VbNsKHMr9UGWGNRlc1qUm0Wl9WlkGL/NlbSNswY8UekwIqr3egywksb/p2h/1eQYRkLrZlbF5B/Ayxhvuw/8DXyuzsFu0n2XFF3zNsae9GxPODwD7iSVOS79J+/E+7+T0JcTmIuKid2Wqp6dtGC2Ndabu6lJe8HDGsC8qKIdeaEraXulqnjR6fZKYM9VdrZXpmL03pJie8VkwBz8pvGNDp+zIONNi1prLWIH0lnC70ueTQFaWcA/CX22FKF3T+OqpVkRJkpSWt+u1IAHim/hIwI0UVZNq36R/x8R8GK6EA2ijwg4TZnfezo8ImAaYPWEwrkbC+FXdo7sjcXQ8FX87Y5T0neagBiQRz6KSYQCG69Ib6lblXQr+Tln+puXFyQtsG55nQt8LMM/Tki3RxQD/9J7U4pBr4nfTzuJ3+R+3q1MtGjAHNpr/u55KZISO9lesYDlKCUF3mVrfrMBKwN3gYfYX8IYDZhLPodw9jxgnfbYHKXRc+w0Ta1kCFgnYDVEfQ+tic2nRNOOalvAIuhvQ2n6ljWr+YBdozd+brTnAXtg41RvALaiOFW3JjQbsBpw2dZT5gPm4G9jv7QmMxuwkuLUPNkdVLHSJbH/ushA+Q9vaTl4rlZ+YAAAAABJRU5ErkJggg==');
+    display: inline-block;
+}
+
+.sprite-prev,
+.sprite-next {
+    height: 32px;
+    width: 32px;
+}
+
+.sprite-prev {
+    background-position: -44px 0;
+}
+
+.sprite-play {
+    height: 44px;
+    width: 44px;
+}
+
+.sprite-next {
+    background-position: -76px 0;
+}
+
+</style>
+</head>
+<body>
+  <div id="bottombar">
+    <div id="button-container">
+      <button title="Previous Track" onclick="MARC.prev()">
+        <i class="sprites sprite-prev"></i>
+      </button>
+      <button class="large" title="Play" onclick="MARC.play()">
+        <i class="sprites sprite-play"></i>
+      </button>
+      <button title="Next Track" onclick="MARC.next()">
+        <i class="sprites sprite-next"></i>
+      </button>
+    </div>
+  </div>
+<script>
+
+/* Global object for communicating with the server. */
+var MARC = {
+    
+    /* Utility method for connecting back to the server to make an API request. */
+    'request': function(method, callback) {
+        //...
+    },
+    
+    /* Simple and (hopefully) self-explanatory methods. */
+    'prev': function() { alert('Previous track button clicked!'); },
+    'play': function() { alert('Play button clicked!'); },
+    'next': function() { alert('Next track button clicked!'); }
+};
+
+</script>
+</body>
+</html>
