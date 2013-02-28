@@ -45,7 +45,7 @@ class MediaHandler(BaseHTTPRequestHandler):
             response = getattr(self, m.group(2))(self._players[m.group(1)])
         else:
             response = {'error': 'the API method "%s" does not exist' % self.path,}
-        self._send_reply(dumps(response), mimetype='application/json')
+        self._send_reply(dumps(response), mime_type='application/json')
     
     # These methods are simple and need no explanation.
     def play(self, player):  player.play()

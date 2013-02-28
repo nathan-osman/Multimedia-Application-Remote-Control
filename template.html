@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Multimedia Application Remote Control</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <style>
 
 body {
@@ -88,13 +89,19 @@ var MARC = {
     
     /* Utility method for connecting back to the server to make an API request. */
     'request': function(method, callback) {
-        //...
+        var request = new XMLHttpRequest();
+        request.open('POST', '/api' + method);
+        request.onreadystatechange = function() {
+            if(request.readyState == 4 && typeof callback != 'undefined')
+                callback(JSON.decode(request.responseText));
+        };
+        request.send();
     },
     
     /* Simple and (hopefully) self-explanatory methods. */
-    'prev': function() { alert('Previous track button clicked!'); },
-    'play': function() { alert('Play button clicked!'); },
-    'next': function() { alert('Next track button clicked!'); }
+    'prev': function() { this.request('/amarok/prev'); },
+    'play': function() { this.request('/amarok/play'); },
+    'next': function() { this.request('/amarok/next'); }
 };
 
 </script>
