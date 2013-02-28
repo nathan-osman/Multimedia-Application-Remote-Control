@@ -1,12 +1,15 @@
 import dbus
 
-class Amarok:
-    '''Represents a D-Bus connection to a running instance of Amarok.'''
+class MediaPlayer:
+    '''Represents a D-Bus connection to a running instance of a supported media player.'''
     
-    def __init__(self):
-        '''Creates a new D-Bus connection to a running instance of Amarok.'''
+    # Definitions for common media players.
+    AMAROK = 'org.kde.amarok'
+    
+    def __init__(self, bus_name):
+        '''Creates a new D-Bus connection to a running instance of the specified media player.'''
         self._bus = dbus.SessionBus()
-        self._proxy = self._bus.get_object('org.kde.amarok', '/Player')
+        self._proxy = self._bus.get_object(bus_name, '/Player')
         self._iface = dbus.Interface(self._proxy, 'org.freedesktop.MediaPlayer')
     
     def __getattr__(self, name):
