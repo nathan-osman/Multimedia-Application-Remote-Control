@@ -3,11 +3,15 @@
 <head>
   <title>Multimedia Application Remote Control</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="../css/style.css" />
 </head>
 <body>
-  <div id="bottombar">
-    <div id="button-container">
+  <div class="topbar">
+    <div id="player"></div>
+    <h2>MARC</h2>
+  </div>
+  <div class="bottombar">
+    <div class="button-container">
       <button title="Previous Track" onclick="MARC.prev()">
         <i class="sprites sprite-prev"></i>
       </button>
@@ -19,7 +23,7 @@
       </button>
     </div>
   </div>
-  <script src="/js/jquery.min.js"></script>
-  <script src="/js/marc.js"></script>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/marc.js"></script>
 </body>
 </html>

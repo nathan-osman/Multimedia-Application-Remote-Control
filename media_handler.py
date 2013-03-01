@@ -22,11 +22,12 @@ class MediaHandler(BaseHTTPRequestHandler):
         }
         cls._static_files = {
             'css/style.css':    'text/css',
+            'html/player.html': 'text/html',
+            'img/icons.png':    'image/png',
             'img/sprites.png':  'image/png',
             'js/jquery.min.js': 'application/javascript',
             'js/marc.js':       'application/javascript',
         }
-        cls._template = open('html/template.html', 'r').read()
     
     def _send_reply(self, content, status_code=200, mime_type='text/html'):
         '''Convenience method for sending a response to the client.'''
@@ -36,10 +37,16 @@ class MediaHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(content)
     
+    def _send_redirect(self, url):
+        '''Convenience method for sending a redirect to the client.'''
+        self.send_response(301)
+        self.send_header('Location', url)
+        self.end_headers()
+    
     def do_GET(self):
         '''Processes an HTTP GET request.'''
         if self.path == '/':
-            self._send_reply(self._template)
+            self._send_redirect('/html/player.html')
         elif self.path[1:] in self._static_files:
             self._send_reply(open(self.path[1:], 'r').read(),
                              mime_type=self._static_files[self.path[1:]])
