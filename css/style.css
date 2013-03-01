@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+}
+
+#bottombar {
+    bottom: 0;
+    overflow: hidden;
+    padding-top: 24px;
+    position: absolute;
+    width: 100%;
+}
+
+#button-container {
+    background-color: #ddd;
+    border-top: 1px solid #aaa;
+    height: 40px;
+    text-align: center;
+}
+
+#button-container button {
+    background-color: #eee;
+    border: 2px solid #bbb;
+    border-radius: 32px;
+    margin-top: -20px;
+    padding: 12px;
+}
+
+#button-container button:hover {
+    background-color: #ddd;
+    border-color: #aaa;
+    cursor: pointer;
+}
+
+#button-container button.large {
+    border-radius: 44px;
+}
+
+.sprites {
+    background-image: url(../img/sprites.png);
+    display: inline-block;
+}
+
+.sprite-prev,
+.sprite-next {
+    height: 32px;
+    width: 32px;
+}
+
+.sprite-prev {
+    background-position: -44px 0;
+}
+
+.sprite-play {
+    height: 44px;
+    width: 44px;
+}
+
+.sprite-next {
+    background-position: -76px 0;
+}
