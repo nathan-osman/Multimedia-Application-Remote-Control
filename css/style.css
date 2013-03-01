@@ -3,6 +3,10 @@ body {
     margin: 0;
 }
 
+#info table th {
+    text-align: left;
+}
+
 #player {
     float: right;
     height: 48px;
@@ -44,6 +48,10 @@ body {
     cursor: pointer;
 }
 
+.current {
+    margin: 0 20px;
+}
+
 .icons {
     background-image: url(../img/icons.png);
     display: inline-block;
@@ -79,6 +87,7 @@ body {
     background: #ddd;
     border-bottom: 1px solid #aaa;
     box-shadow: 0 1px 8px #777;
+    margin-bottom: 20px;
     overflow: auto;
     padding: 4px
 }

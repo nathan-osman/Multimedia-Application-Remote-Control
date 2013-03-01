@@ -12,9 +12,9 @@ class MediaPlayer:
         self._proxy = self._bus.get_object(bus_name, '/Player')
         self._iface = dbus.Interface(self._proxy, 'org.freedesktop.MediaPlayer')
     
-    def __getattr__(self, name):
-        '''Returns metadata about the currently playing song.'''
-        return self._iface.GetMetadata()[name]
+    def info(self):
+        '''Returns information about the currently playing song.'''
+        return self._iface.GetMetadata()
     
     def play(self):
         '''Begins playing the current song.'''

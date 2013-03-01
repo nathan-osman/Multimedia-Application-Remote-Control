@@ -17,9 +17,18 @@ var MARC = {
         });
     },
     
+    /* Displays information about the currently playing song. */
+    'refreshInfo': function() {
+        this.request('/info', function(data) {
+            $('#info').html('<table><tr><th>Title:</th><td>' + data['title'] + '</td></tr><tr><th>Artist:</th><td>' + data['artist'] + '</td></tr><tr><th>Album:</th><td>' + data['album'] + '</td></tr></table>');
+            $('#art').html('<img src="/art/' + data['art'] + '" />');
+        });
+    },
+    
     /* Enumerate all currently running media players. */
     'init': function() {
         this.switchPlayer('amarok');
+        this.refreshInfo();
     },
     
     /* Simple and (hopefully) self-explanatory methods. */
